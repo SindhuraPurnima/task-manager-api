@@ -76,6 +76,64 @@ This challenge is intended to be completed within ~3 hours, so keep solutions mi
   - `npm install` then `npm start` (or `npm run dev`) to run.
   - Document how to point the frontend at the backend (e.g., `.env` file, base URL).
 
+### 4. Setup Instructions
+
+### Database Setup
+
+1. Install PostgreSQL and start service:
+   ```bash
+   brew install postgresql@15
+   brew services start postgresql@15
+   ```
+
+2. Connect as postgres superuser and set up database:
+   ```sql
+   psql postgres
+
+   -- Create database
+   CREATE DATABASE taskmanager;
+   \c taskmanager
+
+   -- Create user
+   CREATE USER betauser WITH PASSWORD 'Challenge';
+
+   -- Create tables first (run the migrations)
+   \i backend/migrations/01_create_users.sql
+   \i backend/migrations/02_create_tasks.sql
+
+   -- Grant privileges after tables exist
+   GRANT ALL PRIVILEGES ON DATABASE taskmanager TO betauser;
+   GRANT ALL PRIVILEGES ON SCHEMA public TO betauser;
+   GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO betauser;
+   GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO betauser;
+
+   -- Verify permissions
+   \dp users
+   \dp tasks
+   ```
+
+3. Create backend environment file:
+   ```bash
+   cd backend
+    echo "DB_USER=betauser\nDB_PASSWORD=Challenge\nDB_HOST=localhost\nDB_PORT=5432\nDB_NAME=taskmanager\nJWT_SECRET=secret_key" > .env
+   ```
+
+4. Start the backend:
+   ```bash
+   cd backend/src
+   npm install
+   npm start
+   ```
+
+5. Create frontend environment file:
+   ```bash
+   cd frontend/src
+   npm install
+   npm start
+   ```
+
+The frontend will run on http://localhost:3001 and the backend on http://localhost:3000.
+
 ---
 
 ## Deliverables
