@@ -135,6 +135,13 @@ This challenge is intended to be completed within ~3 hours, so keep solutions mi
 
 The frontend will run on http://localhost:3001 and the backend on http://localhost:3000.
 
+## 🎬 Video Demo
+
+🔥 **See it in Action!** 🔥  
+Watch the short demo showcasing user registration, login, and task management in action!  
+
+🔗 **[Click here to watch the demo](https://drive.google.com/file/d/1ucAtrHA9SngoQnwWeVwGpF29iVeSNczy/view?usp=sharing)** 
+
 ---
 
 ## Deliverables
