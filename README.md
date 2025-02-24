@@ -115,7 +115,8 @@ This challenge is intended to be completed within ~3 hours, so keep solutions mi
 3. Create backend environment file:
    ```bash
    cd backend
-    echo "DB_USER=betauser\nDB_PASSWORD=Challenge\nDB_HOST=localhost\nDB_PORT=5432\nDB_NAME=taskmanager\nJWT_SECRET=secret_key" > .env
+   echo "DB_USER=betauser\nDB_PASSWORD=Challenge\nDB_HOST=localhost\nDB_PORT=5432\nDB_NAME=taskmanager\nJWT_SECRET=secret_key" > .env
+   cd ..
    ```
 
 4. Start the backend:
