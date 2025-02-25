@@ -142,6 +142,11 @@ Watch the short demo showcasing user registration, login, and task management in
 
 🔗 **[Click here to watch the demo](https://drive.google.com/file/d/1ucAtrHA9SngoQnwWeVwGpF29iVeSNczy/view?usp=sharing)** 
 
+## Salary Expectations
+
+- Expected Salary: $30/hr
+- Availability: Internship(May - August)
+
 ---
 
 ## Deliverables
