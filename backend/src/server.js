@@ -8,9 +8,10 @@ const taskRouter = require('./routeTasks')
 const path = require('path');
 
 const server = express() //Intialize the express app
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-//server.use(express.static(path.join(__dirname, '../frontend/build'))); // Go up one directory from backend to access frontend/build
+// Serve static files from the React frontend app
+server.use(express.static(path.join(__dirname, '../../frontend/build')));
 
 // Add this debug line
 console.log('Environment variables in server.js:', {
@@ -38,7 +39,7 @@ server.get('/', (req, res) => {
 
 
   //register
-  server.post('/auth/register', async(req,res) => {
+  server.post('/api/auth/register', async(req,res) => {
     console.log("Registration attempt for username:", req.body.username);
     const {username, password} = req.body
 
@@ -97,7 +98,7 @@ server.get('/', (req, res) => {
   })
 
   //login
-  server.post('/auth/login',async(req,res) =>{
+  server.post('/api/auth/login',async(req,res) =>{
     console.log("hello")
     const { username, password} = req.body
      
@@ -149,6 +150,11 @@ server.get('/test-db', async (req, res) => {
             detail: err.detail 
         });
     }
+});
+
+// Handles any requests that don't match the ones above
+server.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../frontend/build/index.html'));
 });
 
 server.listen(PORT,() => {

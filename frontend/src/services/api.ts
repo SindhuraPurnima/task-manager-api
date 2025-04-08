@@ -13,7 +13,9 @@ interface TaskResponse {
     task: Task;
 }
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000'
+const API_URL = process.env.NODE_ENV === 'production' 
+  ? '/api'  // In production, use relative path
+  : 'http://localhost:3000/api'; // In development, use full URL
 
 // Helper function to handle fetch responses
 const handleResponse = async (response: Response) => {
